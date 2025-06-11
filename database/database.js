@@ -9,6 +9,8 @@ if (!DB_URI) {
   );
 }
 
+console.log("DB_URI", DB_URI);
+
 
 const connectToDatabase = async () => {
     try {
