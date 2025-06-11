@@ -3,11 +3,11 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import authRouter from "./routes/auth.routes.js";
 import cors from "cors";
+import mongoose from "mongoose"; // ✅ This was missing
 import connectToDatabase from "./database/database.js";
 
-connectToDatabase();
+connectToDatabase(); // ✅ Required for Vercel
 
-// Setup Express
 const app = express();
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
@@ -24,6 +24,5 @@ app.get('/health', async (req, res) => {
     res.status(500).send('❌ MongoDB is NOT connected');
   }
 });
-
 
 export default app;
